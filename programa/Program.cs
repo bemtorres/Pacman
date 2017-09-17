@@ -18,6 +18,8 @@ namespace programa
             String[,] matrizFondo = Mapa.fondo();
             // se crea la copia de ma
             String[,] matrizComida = Mapa.comida(matrizFondo);
+            // se crea la copia de ma
+            String[,] matrizFantasma = Mapa.matrizFantasma(matrizComida);
 
             jugadores.llenar();            
             String opcion = "";
@@ -26,6 +28,7 @@ namespace programa
             int[] posicionPlayer = new int[2];
             bool play= true;
             bool vida = false;
+            int comidaRestante = Mapa.contadorComida(matrizComida);
 
             Pantalla.start();
             while (play)
@@ -60,10 +63,10 @@ namespace programa
 
                 while (vida)
                 {
-                    Pantalla.imprimir(matrizFondo);
+                    Pantalla.imprimirFusion(matrizFondo,matrizComida);
                     // controles
                     Console.WriteLine("      Vida "+player.vida+"                      PUNTOS " + player.puntaje);
-                    Console.WriteLine("C O N T R O L E S                MOVIMIENTOS " + player.contMovimiento);
+                    Console.WriteLine("C O N T R O L E S                MOVIMIENTOS " + player.contMovimiento); // "  comida restante " + comidaRestante 
                     Console.WriteLine("                         [W]");
                     Console.WriteLine("                     8.- ARRIBA");
                     Console.WriteLine("    4.- IZQUIERDA [A]             6.- DERECHA [D]");
@@ -81,6 +84,7 @@ namespace programa
                     }
                     else{
                         player.contMovimiento = player.contMovimiento + 1;
+                        Mapa.movimientoFantasma(matrizFondo, player, matrizFantasma);
                     }                    
                 }
             }                  

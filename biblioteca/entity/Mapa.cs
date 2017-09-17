@@ -406,7 +406,27 @@ namespace biblioteca.entity
                 }
             }
             return matrizComida;
-        }            
+        }
+        public static String[,] matrizFantasma(String[,] mapa) {
+            String[,] matrizComida = new String[31, 28];
+            for (int i = 0; i < 31; i++)
+            {
+                for (int j = 0; j < 28; j++)
+                {
+                    if (mapa[i, j].Equals(".") || mapa[i, j].Equals("x"))
+                    {
+                        matrizComida[i, j] = "0";
+                    }
+                    else
+                    {
+                        matrizComida[i, j] = "1";
+                    }
+                }
+            }
+            return matrizComida;
+
+        }
+
         public static int[] buscarPlayer(String[,] matriz) {
             int[] posicion= new int[2];
             for (int i = 0; i < 31; i++)
@@ -454,12 +474,12 @@ namespace biblioteca.entity
                                     if (matrizComida[i, j] == ".")
                                     {
                                         player.puntaje = player.puntaje + 10;
-                                        matrizComida[i, j] = "";
+                                        matrizComida[i, j] = " ";
                                     }
                                     if (matrizComida[i, j] == "x")
                                     {
                                         player.puntaje = player.puntaje + 100;
-                                        matrizComida[i, j] = "";
+                                        matrizComida[i, j] = " ";
                                     }
                                     matriz[a, b] = " ";
                                     matriz[c, d] = "V";                                    
@@ -496,13 +516,15 @@ namespace biblioteca.entity
                                 }
                                 else
                                 {
-                                    if (matriz[i, j] == ".")
+                                    if (matrizComida[i, j] == ".")
                                     {
                                         player.puntaje = player.puntaje + 10;
+                                        matrizComida[i, j] = " ";
                                     }
-                                    if (matriz[i, j] == "x")
+                                    if (matrizComida[i, j] == "x")
                                     {
                                         player.puntaje = player.puntaje + 100;
+                                        matrizComida[i, j] = " ";
                                     }
                                     matriz[a, b] = " ";
                                     matriz[c, d] = "^";                                    
@@ -548,13 +570,15 @@ namespace biblioteca.entity
                                     }
                                     else
                                     {
-                                        if (matriz[i, j] == ".")
+                                        if (matrizComida[i, j] == ".")
                                         {
                                             player.puntaje = player.puntaje + 10;
+                                            matrizComida[i, j] = " ";
                                         }
-                                        if (matriz[i, j] == "x")
+                                        if (matrizComida[i, j] == "x")
                                         {
                                             player.puntaje = player.puntaje + 100;
+                                            matrizComida[i, j] = " ";
                                         }
                                         matriz[a, b] = " ";
                                         matriz[c, d] = ">";                                        
@@ -601,13 +625,15 @@ namespace biblioteca.entity
                                     }
                                     else
                                     {
-                                        if (matriz[i, j] == ".")
+                                        if (matrizComida[i, j] == ".")
                                         {
                                             player.puntaje = player.puntaje + 10;
+                                            matrizComida[i, j] = " ";
                                         }
-                                        if (matriz[i, j] == "x")
+                                        if (matrizComida[i, j] == "x")
                                         {
                                             player.puntaje = player.puntaje + 100;
+                                            matrizComida[i, j] = " ";
                                         }
                                         matriz[a, b] = " ";
                                         matriz[c, d] = "<";                                        
@@ -623,11 +649,24 @@ namespace biblioteca.entity
             // ----- FIN CONTROLES ---- 
             return false;
         }
-
-
-
-       
-
+        public static bool movimientoFantasma(String[,] matriz, Jugador player, String[,] fantasma) {
+            return false;
+        }
+        public static int contadorComida(String[,] mapaComida) {
+            int cont = 0;
+            for (int i = 0; i < 31; i++)
+            {
+                for (int j = 0; j < 28; j++)
+                {
+                    if (mapaComida[i,j].Equals(".") || mapaComida[i, j].Equals("x"))
+                    {
+                        cont++;
+                    }
+                }
+            }
+            return cont;
+        }
+        
       
     }
 }

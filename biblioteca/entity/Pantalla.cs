@@ -253,7 +253,7 @@ namespace biblioteca.entity
                         if (matrizComida[i, j] == ".")
                         {
                             Console.ForegroundColor = ConsoleColor.Blue;
-                            Console.Write(" " + matriz[i, j]);
+                            Console.Write(" " + matrizComida[i, j]);
                             Console.ForegroundColor = ConsoleColor.White;
                         }
                         else
