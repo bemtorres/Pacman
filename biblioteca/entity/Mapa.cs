@@ -390,7 +390,6 @@ namespace biblioteca.entity
             }
             return matriz;
         }
-
         public static String[,] comida(String[,] mapa) {
             String[,] matrizComida = new String[31, 28];
             for (int i = 0; i < 31; i++)
@@ -408,7 +407,6 @@ namespace biblioteca.entity
             }
             return matrizComida;
         }
-
         public static void imprimir(String[,] matriz) {
             Console.Clear();
             for (int i = 0; i < 31; i++)
@@ -485,7 +483,6 @@ namespace biblioteca.entity
                 Console.WriteLine("");
             }
         }
-
         public static void start()
         {
             Console.Clear();
@@ -526,7 +523,6 @@ namespace biblioteca.entity
             Console.WriteLine("                      Presione una tecla para continuar...");
             Console.ReadKey();            
         }
-
         public static void agregarJugador() {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -589,8 +585,6 @@ namespace biblioteca.entity
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("               Elija una opcion...");
         }
-
-
         public static void imprimirPuntajes(JugadorColeccion jugadores) {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -623,8 +617,43 @@ namespace biblioteca.entity
             Console.WriteLine("                      Presione una tecla volver al menu");
             Console.ReadKey();      
         }
-        public static void gameOver(String nombre, int puntaje) {
+
+        public static int[] buscarPlayer(String[,] matriz) {
+            int[] posicion= new int[2];
+            for (int i = 0; i < 31; i++)
+            {
+                for (int j = 0; j < 28; j++)
+                {
+                    if (matriz[i, j] == "<" || matriz[i, j] == ">" || matriz[i, j] == "V" || matriz[i, j] == "^")
+                    {
+                        posicion[0] = i;
+                        posicion[1] = j;
+                    }
+                }
+            }
+
+            return posicion;
+        }
+
+
+
+
+        public static void exit() {            
             Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("     Muchas Gracias  ");
+            Console.WriteLine("     ");
+            Console.WriteLine("");
+            Console.WriteLine("                 Fin del escenario ");
+            Console.WriteLine("           _ __   __ _  ___ _ __ ___   __ _ _ ___ ");
+            Console.WriteLine("          |  _ | / _` |/ __|  _   _ | / _` |  _  |");
+            Console.WriteLine("          | |_) | (_| | (__| | | | | | (_| | | | |");
+            Console.WriteLine("          | .__/  __,_| ___|_| |_| |_| __,_|_| |_|");
+            Console.WriteLine("          |_| ");
+            Console.WriteLine("                             Programado por Benjamin Mora");
+            Console.ReadKey();
         }
 
       

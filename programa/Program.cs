@@ -14,13 +14,16 @@ namespace programa
             Console.WriteLine("Pacman: \"{0}\"",
                      Console.Title);
             JugadorColeccion jugadores = new JugadorColeccion();
-
-            jugadores.llenar();
+            //Se crea el mapa
             String[,] matrizFondo = Mapa.fondo();
+            // se crea la copia de ma
             String[,] matrizComida = Mapa.comida(matrizFondo);
+
+            jugadores.llenar();            
             String opcion = "";
 
             Jugador player = new Jugador();
+            int[] posicionPlayer = new int[2];
             bool play= true;
             bool vida = false;
 
@@ -31,16 +34,28 @@ namespace programa
                 opcion = Console.ReadLine();
                 if (opcion.Equals("1"))
                 {
+                    //imprime salida para agregar
                     Mapa.agregarJugador();
-                    player.nombre = Console.ReadLine();
+                    player.nombre = Console.ReadLine(); //pregunta nombre y lo agrega
                     player.puntaje = 0;
                     player.vida = 3;
-                    player.contMovimiento = 0;
-                    vida = jugadores.agregar(player); ;
+                    player.contMovimiento = 0;                    
+                    vida = jugadores.agregar(player); //incresa un nuevo jugador
+                    posicionPlayer = Mapa.buscarPlayer(matrizFondo); // se busca la posicion del jugador para tenerla guardada
                 }
                 if (opcion.Equals("2"))
                 {
                     Mapa.imprimirPuntajes(jugadores);
+                }
+                if (opcion.Equals("3"))
+                {
+
+                }
+                if (opcion.Equals("4"))
+                {
+                    Mapa.exit();
+                    vida = false;
+                    play = false;
                 }
 
                 while (vida)
@@ -59,9 +74,11 @@ namespace programa
                     Console.WriteLine("                     2.- ABAJO");
                     Console.WriteLine("                          [S]");
                     Console.WriteLine("");
-                    // do
-                    //{
+
+
                     opcion = Console.ReadLine();
+                    ///Mapa.movimieto(String opcion);
+                   
                 }
             }
            
