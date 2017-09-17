@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="entity\Jugador.cs" />
     <Compile Include="entity\JugadorColeccion.cs" />
+    <Compile Include="entity\Mapa.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
