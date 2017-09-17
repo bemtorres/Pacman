@@ -11,6 +11,8 @@ namespace OnlyLine
     {
         static void Main(string[] args)
         {
+            //Este es el proyecto que hice en marzo 2017
+
             string[,] matriz = new string[31, 28];
             bool vida = true, seMovio = false;
             int puntos = 0, contMove = 0, a = 0, b = 0, c = 0, d = 0;

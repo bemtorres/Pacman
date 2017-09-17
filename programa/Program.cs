@@ -62,7 +62,7 @@ namespace programa
                 {
                     Pantalla.imprimir(matrizFondo);
                     // controles
-                    Console.WriteLine("Vida"+player.vida+"                      PUNTOS " + player.puntaje);
+                    Console.WriteLine("      Vida "+player.vida+"                      PUNTOS " + player.puntaje);
                     Console.WriteLine("C O N T R O L E S                MOVIMIENTOS " + player.contMovimiento);
                     Console.WriteLine("                         [W]");
                     Console.WriteLine("                     8.- ARRIBA");
@@ -81,14 +81,9 @@ namespace programa
                     }
                     else{
                         player.contMovimiento = player.contMovimiento + 1;
-                    }
-                    
-                    
+                    }                    
                 }
-
-
-            }           
-           
+            }                  
         }
     }
 }

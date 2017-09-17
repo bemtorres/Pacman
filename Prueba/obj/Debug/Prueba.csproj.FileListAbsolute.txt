@@ -1,0 +1,8 @@
+C:\Users\benja\Desktop\Pacman\Pacman\Prueba\bin\Debug\Prueba.exe
+C:\Users\benja\Desktop\Pacman\Pacman\Prueba\bin\Debug\Prueba.pdb
+C:\Users\benja\Desktop\Pacman\Pacman\Prueba\bin\Debug\biblioteca.dll
+C:\Users\benja\Desktop\Pacman\Pacman\Prueba\bin\Debug\biblioteca.pdb
+C:\Users\benja\Desktop\Pacman\Pacman\Prueba\obj\Debug\Prueba.csprojResolveAssemblyReference.cache
+C:\Users\benja\Desktop\Pacman\Pacman\Prueba\obj\Debug\Prueba.csproj.CoreCompileInputs.cache
+C:\Users\benja\Desktop\Pacman\Pacman\Prueba\obj\Debug\Prueba.exe
+C:\Users\benja\Desktop\Pacman\Pacman\Prueba\obj\Debug\Prueba.pdb

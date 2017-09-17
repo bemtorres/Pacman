@@ -396,12 +396,12 @@ namespace biblioteca.entity
             {
                 for (int j = 0; j < 28; j++)
                 {
-                    if (mapa[i, j].Equals("."))
+                    if (mapa[i, j].Equals(".") || mapa[i, j].Equals("x"))
                     {
                         matrizComida[i, j] = mapa[i, j];
-                    }
+                    }                   
                     else {
-                        matrizComida[i, j] = "";
+                        matrizComida[i, j] = " ";
                     }
                 }
             }
@@ -423,7 +423,6 @@ namespace biblioteca.entity
 
             return posicion;
         }
-
         public static bool movimientoPlayer(String opc, String[,] matriz, int[] posicion, Jugador player, String[,] matrizComida) {
             #region MOVIMIENTO ARRIBA JUGADOR
             //MOVIMIENTO ARRIBA
@@ -452,13 +451,15 @@ namespace biblioteca.entity
                                 }
                                 else
                                 {
-                                    if (matriz[i, j] == ".")
+                                    if (matrizComida[i, j] == ".")
                                     {
                                         player.puntaje = player.puntaje + 10;
+                                        matrizComida[i, j] = "";
                                     }
-                                    if (matriz[i, j] == "x")
+                                    if (matrizComida[i, j] == "x")
                                     {
                                         player.puntaje = player.puntaje + 100;
+                                        matrizComida[i, j] = "";
                                     }
                                     matriz[a, b] = " ";
                                     matriz[c, d] = "V";                                    
