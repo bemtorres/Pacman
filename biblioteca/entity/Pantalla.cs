@@ -227,6 +227,90 @@ namespace biblioteca.entity
                 Console.WriteLine("");
             }
         }
+        public static void imprimirFusion(String[,] matriz, String[,] matrizComida)
+        {
+            Console.Clear();
+            for (int i = 0; i < 31; i++)
+            {
+                for (int j = 0; j < 28; j++)
+                {
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    if (matriz[i, j] == "-" || matriz[i, j] == "|" || matriz[i, j] == "=" || matriz[i, j] == "#" || matriz[i, j] == "_")
+                    {
+                        // Console.BackgroundColor = ConsoleColor.Cyan;
+
+                    }
+                    if (matriz[i, j] == "x")
+                    {
+
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.Write(" " + matriz[i, j]);
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
+
+                    else
+                    {
+                        if (matrizComida[i, j] == ".")
+                        {
+                            Console.ForegroundColor = ConsoleColor.Blue;
+                            Console.Write(" " + matriz[i, j]);
+                            Console.ForegroundColor = ConsoleColor.White;
+                        }
+                        else
+                        {
+                            if (matriz[i, j] == ">" || matriz[i, j] == "<" || matriz[i, j] == "V" || matriz[i, j] == "^")
+                            {
+                                Console.ForegroundColor = ConsoleColor.Yellow;
+                                Console.Write(" " + matriz[i, j]);
+                                Console.ForegroundColor = ConsoleColor.White;
+                            }
+                            else
+                            {
+                                if (matriz[i, j] == "P")
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Cyan;
+                                    Console.Write(" " + matriz[i, j]);
+                                    Console.ForegroundColor = ConsoleColor.White;
+                                }
+                                else
+                                {
+                                    if (matriz[i, j] == "R")
+                                    {
+                                        Console.ForegroundColor = ConsoleColor.Green;
+                                        Console.Write(" " + matriz[i, j]);
+                                        Console.ForegroundColor = ConsoleColor.White;
+                                    }
+                                    else
+                                    {
+                                        if (matriz[i, j] == "C")
+                                        {
+                                            Console.ForegroundColor = ConsoleColor.Gray;
+                                            Console.Write(" " + matriz[i, j]);
+                                            Console.ForegroundColor = ConsoleColor.White;
+                                        }
+                                        else
+                                        {
+                                            if (matriz[i, j] == "N")
+                                            {
+                                                Console.ForegroundColor = ConsoleColor.Yellow;
+                                                Console.Write(" " + matriz[i, j]);
+                                                Console.ForegroundColor = ConsoleColor.White;
+                                            }
+                                            else
+                                            {
+                                                Console.ForegroundColor = ConsoleColor.White;
+                                                Console.Write(" " + matriz[i, j]);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                Console.WriteLine("");
+            }
+        }
         public static void exit()
         {
             Console.Clear();
