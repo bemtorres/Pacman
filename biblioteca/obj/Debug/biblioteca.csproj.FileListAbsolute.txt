@@ -1,0 +1,6 @@
+C:\Users\benja\Desktop\Pacman\biblioteca\biblioteca\bin\Debug\biblioteca.dll
+C:\Users\benja\Desktop\Pacman\biblioteca\biblioteca\bin\Debug\biblioteca.pdb
+C:\Users\benja\Desktop\Pacman\biblioteca\biblioteca\obj\Debug\biblioteca.csprojResolveAssemblyReference.cache
+C:\Users\benja\Desktop\Pacman\biblioteca\biblioteca\obj\Debug\biblioteca.csproj.CoreCompileInputs.cache
+C:\Users\benja\Desktop\Pacman\biblioteca\biblioteca\obj\Debug\biblioteca.dll
+C:\Users\benja\Desktop\Pacman\biblioteca\biblioteca\obj\Debug\biblioteca.pdb
