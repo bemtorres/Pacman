@@ -521,7 +521,7 @@ namespace biblioteca.entity
             Console.WriteLine("      |   |                                     |   |   ");
             Console.WriteLine("       ^^^                                       ^^^    ");
             Console.WriteLine("==========================================================");
-            Thread.Sleep(2000);
+            Thread.Sleep(200);
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("                      Presione una tecla para continuar...");
             Console.ReadKey();            
@@ -550,7 +550,6 @@ namespace biblioteca.entity
             Console.WriteLine("      |   |                                     |   |   ");
             Console.WriteLine("       ^^^                                       ^^^    ");
             Console.WriteLine("==========================================================");
-            Thread.Sleep(2000);
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("                      ");    
         }
@@ -580,8 +579,12 @@ namespace biblioteca.entity
             Console.Write("         2.- Tabla de puntajes");
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("    | OO|   ");
-            Console.WriteLine("      |   |                                     |   |   ");
-            Console.WriteLine("       ^^^                                       ^^^    ");
+            Console.Write("      |   |            ");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("3.- Creditos");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("             |   |   ");
+            Console.WriteLine("       ^^^             4.- Salir                 ^^^    ");
             Console.WriteLine("==========================================================");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("               Elija una opcion...");

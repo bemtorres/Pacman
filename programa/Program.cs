@@ -45,12 +45,13 @@ namespace programa
 
                 while (vida)
                 {
+                    Mapa.imprimir(matrizFondo);
                     //
                     //
                     //CADENA DE MANDO
                     //
                     //
-                    Console.WriteLine("< < < <                          PUNTOS " + player.puntaje);
+                    Console.WriteLine("Vida"+player.vida+"                      PUNTOS " + player.puntaje);
                     Console.WriteLine("C O N T R O L E S                MOVIMIENTOS " + player.contMovimiento);
                     Console.WriteLine("                         [W]");
                     Console.WriteLine("                     8.- ARRIBA");
