@@ -27,10 +27,10 @@ namespace programa
             bool play= true;
             bool vida = false;
 
-            Mapa.start();
+            Pantalla.start();
             while (play)
             {
-                Mapa.menu();
+                Pantalla.menu();
                 opcion = Console.ReadLine();
                 if (opcion.Equals("1"))
                 {
@@ -45,7 +45,7 @@ namespace programa
                 }
                 if (opcion.Equals("2"))
                 {
-                    Mapa.imprimirPuntajes(jugadores);
+                    Pantalla.imprimirPuntajes(jugadores);
                 }
                 if (opcion.Equals("3"))
                 {
@@ -53,19 +53,15 @@ namespace programa
                 }
                 if (opcion.Equals("4"))
                 {
-                    Mapa.exit();
+                    Pantalla.exit();
                     vida = false;
                     play = false;
                 }
 
                 while (vida)
                 {
-                    Mapa.imprimir(matrizFondo);
-                    //
-                    //
-                    //CADENA DE MANDO
-                    //
-                    //
+                    Pantalla.imprimir(matrizFondo);
+                    // controles
                     Console.WriteLine("Vida"+player.vida+"                      PUNTOS " + player.puntaje);
                     Console.WriteLine("C O N T R O L E S                MOVIMIENTOS " + player.contMovimiento);
                     Console.WriteLine("                         [W]");
@@ -78,20 +74,12 @@ namespace programa
 
                     opcion = Console.ReadLine();
                     ///Mapa.movimieto(String opcion);
-                   
+                    Mapa.movimientoPlayer(opcion);   
                 }
-            }
+
+
+            }           
            
-
-
-
-
-
-            Mapa.menu();
-            //Mapa.imprimir(matrizFondo);
-
-            Console.ReadKey();
-
         }
     }
 }

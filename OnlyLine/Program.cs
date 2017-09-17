@@ -24,7 +24,7 @@ namespace OnlyLine
             //  ********************************************
             //  *  G E N E R A D O R    D E    M A T R I Z *
             //  ********************************************
-            //
+            //ok
             for (int i = 0; i < 31; i++)
             {
                 for (int j = 0; j < 28; j++)
@@ -412,7 +412,7 @@ namespace OnlyLine
                 //
                 //SALIDA DE VISTA
                 //
-                //
+                //ok
                 #region IMPRESOR MATRIZ
                 for (int i = 0; i < 31; i++)
                 {
@@ -489,7 +489,7 @@ namespace OnlyLine
                 }
                 #endregion 
 
-                //
+                //ok
                 //
                 //CADENA DE MANDO
                 //
@@ -511,7 +511,7 @@ namespace OnlyLine
                 //Console.WriteLine("eligio ");
 
                 //  Console.ReadLine();
-
+                //OK
                 //BUSCA LA POSICION DEL JUGADOR Y LO GUARDA EN DOS VARIABLES
                 #region BUSCAR PACMAN
                 for (int i = 0; i < 31; i++)
@@ -526,7 +526,7 @@ namespace OnlyLine
                     }
                 }
                 #endregion
-                //
+                // Ok
                 for (int i = 0; i < 31; i++)
                 {
                     for (int j = 0; j < 28; j++)
@@ -544,6 +544,7 @@ namespace OnlyLine
                 //
                 #region MOVIMIENTO ARRIBA JUGADOR
                 //MOVIMIENTO ARRIBA
+
                 if (opc == "8" || opc == "w" || opc == "W")
                 {
                     c = a - 1;
