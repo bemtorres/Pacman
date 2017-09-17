@@ -73,11 +73,14 @@ namespace programa
                     opcion = Console.ReadLine();
                     posicionPlayer = Mapa.buscarPlayer(matrizFondo); // se busca la posicion del jugador para tenerla guardada
 
-                    if (!Mapa.movimientoPlayer(opcion, matrizFondo, posicionPlayer, player))
+                    if (!Mapa.movimientoPlayer(opcion, matrizFondo, posicionPlayer, player, matrizComida))
                     {
                         Console.WriteLine("No se puede hacer ese movimiento.");
                         Console.ReadLine();
                         Console.Clear();
+                    }
+                    else{
+                        player.contMovimiento = player.contMovimiento + 1;
                     }
                     
                     

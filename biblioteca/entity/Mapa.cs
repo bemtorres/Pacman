@@ -424,7 +424,7 @@ namespace biblioteca.entity
             return posicion;
         }
 
-        public static bool movimientoPlayer(String opc, String[,] matriz, int[] posicion, Jugador player) {
+        public static bool movimientoPlayer(String opc, String[,] matriz, int[] posicion, Jugador player, String[,] matrizComida) {
             #region MOVIMIENTO ARRIBA JUGADOR
             //MOVIMIENTO ARRIBA
             int a= posicion[0];
@@ -461,8 +461,7 @@ namespace biblioteca.entity
                                         player.puntaje = player.puntaje + 100;
                                     }
                                     matriz[a, b] = " ";
-                                    matriz[c, d] = "V";
-                                    player.contMovimiento = player.contMovimiento + 1;
+                                    matriz[c, d] = "V";                                    
                                     return true;
 
                                 }
@@ -505,8 +504,7 @@ namespace biblioteca.entity
                                         player.puntaje = player.puntaje + 100;
                                     }
                                     matriz[a, b] = " ";
-                                    matriz[c, d] = "^";
-                                    player.contMovimiento = player.contMovimiento + 1;
+                                    matriz[c, d] = "^";                                    
                                     return true;
                                 }
                             }
@@ -530,7 +528,8 @@ namespace biblioteca.entity
                         if (c == 14 && d == -1)
                         {
                             matriz[a, b] = " ";
-                            matriz[14, 27] = ">";                                                
+                            matriz[14, 27] = ">";
+                            return true;
                         }
                         else
                         {
@@ -557,8 +556,7 @@ namespace biblioteca.entity
                                             player.puntaje = player.puntaje + 100;
                                         }
                                         matriz[a, b] = " ";
-                                        matriz[c, d] = ">";
-                                        player.contMovimiento = player.contMovimiento + 1;
+                                        matriz[c, d] = ">";                                        
                                         return true;
                                     }
                                 }
@@ -583,7 +581,8 @@ namespace biblioteca.entity
                         if (c == 14 && d == 28)
                         {
                             matriz[a, b] = " ";
-                            matriz[14, 0] = "<";                           
+                            matriz[14, 0] = "<";
+                            return true;
                         }
                         else
                         {
@@ -610,8 +609,7 @@ namespace biblioteca.entity
                                             player.puntaje = player.puntaje + 100;
                                         }
                                         matriz[a, b] = " ";
-                                        matriz[c, d] = "<";
-                                        player.contMovimiento = player.contMovimiento + 1;
+                                        matriz[c, d] = "<";                                        
                                         return true;
                                     }
                                 }

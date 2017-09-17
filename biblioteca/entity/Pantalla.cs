@@ -151,8 +151,14 @@ namespace biblioteca.entity
             {
                 for (int j = 0; j < 28; j++)
                 {
-                    if (matriz[i, j] == "x")
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    if (matriz[i, j] == "-" || matriz[i, j] == "|" || matriz[i, j] == "=" || matriz[i, j] == "#" || matriz[i, j] == "_")
                     {
+                       // Console.BackgroundColor = ConsoleColor.Cyan;
+
+                    }
+                    if (matriz[i, j] == "x")                    {
+                        
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.Write(" " + matriz[i, j]);
                         Console.ForegroundColor = ConsoleColor.White;
