@@ -117,6 +117,33 @@ namespace biblioteca.entity
             Console.WriteLine("                      Presione una tecla volver al menu");
             Console.ReadKey();
         }
+        public static void agregarJugador()
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("                   Empezar");
+            Console.WriteLine("           _ __   __ _  ___ _ __ ___   __ _ _ ___ ");
+            Console.WriteLine("          |  _ | / _` |/ __|  _   _ | / _` |  _  |");
+            Console.WriteLine("          | |_) | (_| | (__| | | | | | (_| | | | |");
+            Console.WriteLine("          | .__/  __,_| ___|_| |_| |_| __,_|_| |_|");
+            Console.WriteLine("          |_| ");
+            Console.WriteLine("");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("                    by Benjamin Mora");
+            Console.ForegroundColor = ConsoleColor.Cyan; ;
+            Console.WriteLine("");
+            Console.WriteLine("@=========================================================@");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("              Ingrese su nombre");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("       .-.                                       .-. ");
+            Console.WriteLine("      | OO|                                     | OO|   ");
+            Console.WriteLine("      |   |                                     |   |   ");
+            Console.WriteLine("       ^^^                                       ^^^    ");
+            Console.WriteLine("==========================================================");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("                      ");
+        }
         public static void imprimir(String[,] matriz)
         {
             Console.Clear();

@@ -35,13 +35,12 @@ namespace programa
                 if (opcion.Equals("1"))
                 {
                     //imprime salida para agregar
-                    Mapa.agregarJugador();
+                    Pantalla.agregarJugador();
                     player.nombre = Console.ReadLine(); //pregunta nombre y lo agrega
                     player.puntaje = 0;
                     player.vida = 3;
                     player.contMovimiento = 0;                    
-                    vida = jugadores.agregar(player); //incresa un nuevo jugador
-                    posicionPlayer = Mapa.buscarPlayer(matrizFondo); // se busca la posicion del jugador para tenerla guardada
+                    vida = jugadores.agregar(player); //incresa un nuevo jugador                   
                 }
                 if (opcion.Equals("2"))
                 {
@@ -49,7 +48,8 @@ namespace programa
                 }
                 if (opcion.Equals("3"))
                 {
-
+                    vida = false;
+                    play = false;
                 }
                 if (opcion.Equals("4"))
                 {
@@ -70,11 +70,17 @@ namespace programa
                     Console.WriteLine("                     2.- ABAJO");
                     Console.WriteLine("                          [S]");
                     Console.WriteLine("");
-
-
                     opcion = Console.ReadLine();
-                    ///Mapa.movimieto(String opcion);
-                    Mapa.movimientoPlayer(opcion);   
+                    posicionPlayer = Mapa.buscarPlayer(matrizFondo); // se busca la posicion del jugador para tenerla guardada
+
+                    if (!Mapa.movimientoPlayer(opcion, matrizFondo, posicionPlayer, player))
+                    {
+                        Console.WriteLine("No se puede hacer ese movimiento.");
+                        Console.ReadLine();
+                        Console.Clear();
+                    }
+                    
+                    
                 }
 
 

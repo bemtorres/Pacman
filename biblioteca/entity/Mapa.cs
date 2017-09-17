@@ -406,34 +406,7 @@ namespace biblioteca.entity
                 }
             }
             return matrizComida;
-        }        
-        public static void agregarJugador() {
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("                   Empezar");
-            Console.WriteLine("           _ __   __ _  ___ _ __ ___   __ _ _ ___ ");
-            Console.WriteLine("          |  _ | / _` |/ __|  _   _ | / _` |  _  |");
-            Console.WriteLine("          | |_) | (_| | (__| | | | | | (_| | | | |");
-            Console.WriteLine("          | .__/  __,_| ___|_| |_| |_| __,_|_| |_|");
-            Console.WriteLine("          |_| ");
-            Console.WriteLine("");
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("                    by Benjamin Mora");
-            Console.ForegroundColor = ConsoleColor.Cyan; ;
-            Console.WriteLine("");
-            Console.WriteLine("@=========================================================@");
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("              Ingrese su nombre");            
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("       .-.                                       .-. ");
-            Console.WriteLine("      | OO|                                     | OO|   ");
-            Console.WriteLine("      |   |                                     |   |   ");
-            Console.WriteLine("       ^^^                                       ^^^    ");
-            Console.WriteLine("==========================================================");
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("                      ");    
-        }
-        
+        }            
         public static int[] buscarPlayer(String[,] matriz) {
             int[] posicion= new int[2];
             for (int i = 0; i < 31; i++)
@@ -451,9 +424,204 @@ namespace biblioteca.entity
             return posicion;
         }
 
-        public static bool movimientoPlayer(String opcion) {
+        public static bool movimientoPlayer(String opc, String[,] matriz, int[] posicion, Jugador player) {
+            #region MOVIMIENTO ARRIBA JUGADOR
+            //MOVIMIENTO ARRIBA
+            int a= posicion[0];
+            int b= posicion[1];
+            int c, d;
+            if (opc == "8" || opc == "w" || opc == "W")
+            {
+                c = a - 1;
+                d = b;
+                for (int i = 0; i < 30; i++)
+                {
+                    for (int j = 0; j < 27; j++)
+                    {
+                        if (i == c && j == d)
+                        {
+                            if (matriz[i, j] == "-" || matriz[i, j] == "|" || matriz[i, j] == "=" || matriz[i, j] == "#" || matriz[i, j] == "_")
+                            {
+                                return false;
+                            }
+                            else
+                            {
+                                if (matriz[i, j] == "R" || matriz[i, j] == "P" || matriz[i, j] == "C" || matriz[i, j] == "N")
+                                {
+                                    //vida = false;
+                                }
+                                else
+                                {
+                                    if (matriz[i, j] == ".")
+                                    {
+                                        player.puntaje = player.puntaje + 10;
+                                    }
+                                    if (matriz[i, j] == "x")
+                                    {
+                                        player.puntaje = player.puntaje + 100;
+                                    }
+                                    matriz[a, b] = " ";
+                                    matriz[c, d] = "V";
+                                    player.contMovimiento = player.contMovimiento + 1;
+                                    return true;
 
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            #endregion
+            //
+            #region MOVIMIENTO ABAJO JUGADOR
+            if (opc == "S" || opc == "s" || opc == "5")
+            {
+                c = a + 1;
+                d = b;
+                for (int i = 0; i < 30; i++)
+                {
+                    for (int j = 0; j < 27; j++)
+                    {
+                        if (i == c && j == d)
+                        {
+                            if (matriz[i, j] == "-" || matriz[i, j] == "|" || matriz[i, j] == "=" || matriz[i, j] == "#" || matriz[i, j] == "_")
+                            {
+                                return false;
+                            }
+                            else
+                            {
+                                if (matriz[i, j] == "R" || matriz[i, j] == "P" || matriz[i, j] == "C" || matriz[i, j] == "N")
+                                {
+                                    //vida = false;
+                                }
+                                else
+                                {
+                                    if (matriz[i, j] == ".")
+                                    {
+                                        player.puntaje = player.puntaje + 10;
+                                    }
+                                    if (matriz[i, j] == "x")
+                                    {
+                                        player.puntaje = player.puntaje + 100;
+                                    }
+                                    matriz[a, b] = " ";
+                                    matriz[c, d] = "^";
+                                    player.contMovimiento = player.contMovimiento + 1;
+                                    return true;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            #endregion
+            //
+            #region MOVIMIENTO IZQUIERDA JUGADOR
+            //MOVER A LA IZQUIERDA
+            if (opc == "a" || opc == "A" || opc == "4")
+            {
+                c = a;
+                d = b - 1;
+                for (int i = 0; i < 31; i++)
+                {
+                    for (int j = 0; j < 28; j++)
+                    {
 
+                        if (c == 14 && d == -1)
+                        {
+                            matriz[a, b] = " ";
+                            matriz[14, 27] = ">";                                                
+                        }
+                        else
+                        {
+                            if (i == c && j == d)
+                            {
+                                if (matriz[i, j] == "-" || matriz[i, j] == "|" || matriz[i, j] == "=" || matriz[i, j] == "#" || matriz[i, j] == "_")
+                                {
+                                    return false;
+                                }
+                                else
+                                {
+                                    if (matriz[i, j] == "R" || matriz[i, j] == "P" || matriz[i, j] == "C" || matriz[i, j] == "N")
+                                    {
+                                       // vida = false;
+                                    }
+                                    else
+                                    {
+                                        if (matriz[i, j] == ".")
+                                        {
+                                            player.puntaje = player.puntaje + 10;
+                                        }
+                                        if (matriz[i, j] == "x")
+                                        {
+                                            player.puntaje = player.puntaje + 100;
+                                        }
+                                        matriz[a, b] = " ";
+                                        matriz[c, d] = ">";
+                                        player.contMovimiento = player.contMovimiento + 1;
+                                        return true;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            #endregion
+            //
+            #region MOVIMIENTO DERECHA JUGADOR
+            //MOVER A LA DERECHA
+            if (opc == "D" || opc == "d" || opc == "6")
+            {
+                c = a;
+                d = b + 1;
+                for (int i = 0; i < 31; i++)
+                {
+                    for (int j = 0; j < 28; j++)
+                    {
+
+                        if (c == 14 && d == 28)
+                        {
+                            matriz[a, b] = " ";
+                            matriz[14, 0] = "<";                           
+                        }
+                        else
+                        {
+                            if (i == c && j == d)
+                            {
+                                if (matriz[i, j] == "-" || matriz[i, j] == "|" || matriz[i, j] == "=" || matriz[i, j] == "#" || matriz[i, j] == "_")
+                                {
+                                    return false;
+                                }
+                                else
+                                {
+                                    if (matriz[i, j] == "R" || matriz[i, j] == "P" || matriz[i, j] == "C" || matriz[i, j] == "N")
+                                    {
+                                        //vida = false;
+                                    }
+                                    else
+                                    {
+                                        if (matriz[i, j] == ".")
+                                        {
+                                            player.puntaje = player.puntaje + 10;
+                                        }
+                                        if (matriz[i, j] == "x")
+                                        {
+                                            player.puntaje = player.puntaje + 100;
+                                        }
+                                        matriz[a, b] = " ";
+                                        matriz[c, d] = "<";
+                                        player.contMovimiento = player.contMovimiento + 1;
+                                        return true;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            #endregion
+            // ----- FIN CONTROLES ---- 
             return false;
         }
 
