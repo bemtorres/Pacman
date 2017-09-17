@@ -3,13 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 
-namespace biblioteca.entity
+namespace OnlyLine
 {
-    public class Mapa
+    class Program
     {
-        public static String[,] fondo() {
-            String[,] matriz = new String[31, 28];
+        static void Main(string[] args)
+        {
+            string[,] matriz = new string[31, 28];
+            bool vida = true, seMovio = false;
+            int puntos = 0, contMove = 0, a = 0, b = 0, c = 0, d = 0;
+            string opc = "";
+            string[,] matrizPuntos = new string[31, 28]; //matriz que guardara la posicion 
+
+            presentacion();
+
+
+            //
+            //  ********************************************
+            //  *  G E N E R A D O R    D E    M A T R I Z *
+            //  ********************************************
+            //
             for (int i = 0; i < 31; i++)
             {
                 for (int j = 0; j < 28; j++)
@@ -388,92 +403,81 @@ namespace biblioteca.entity
 
                 }
             }
-            return matriz;
-        }
 
-        public static String[,] comida(String[,] mapa) {
-            String[,] matrizComida = new String[31, 28];
-            for (int i = 0; i < 31; i++)
+            // PROCESO DEL JUEGO
+
+            while (vida)
             {
-                for (int j = 0; j < 28; j++)
+                //  
+                //
+                //SALIDA DE VISTA
+                //
+                //
+                #region IMPRESOR MATRIZ
+                for (int i = 0; i < 31; i++)
                 {
-                    if (mapa[i, j].Equals("."))
+                    for (int j = 0; j < 28; j++)
                     {
-                        matrizComida[i, j] = mapa[i, j];
-                    }
-                    else {
-                        matrizComida[i, j] = "";
-                    }
-                }
-            }
-            return matrizComida;
-        }
-
-        public static void imprimir(String[,] matriz) {
-            Console.Clear();
-            for (int i = 0; i < 31; i++)
-            {
-                for (int j = 0; j < 28; j++)
-                {
-                    if (matriz[i, j] == "x")
-                    {
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.Write(" " + matriz[i, j]);
-                        Console.ForegroundColor = ConsoleColor.White;
-                    }
-
-                    else
-                    {
-                        if (matriz[i, j] == ".")
+                        if (matriz[i, j] == "x")
                         {
-                            Console.ForegroundColor = ConsoleColor.Blue;
+                            Console.ForegroundColor = ConsoleColor.Yellow;
                             Console.Write(" " + matriz[i, j]);
                             Console.ForegroundColor = ConsoleColor.White;
                         }
+
                         else
                         {
-                            if (matriz[i, j] == ">" || matriz[i, j] == "<" || matriz[i, j] == "V" || matriz[i, j] == "^")
+                            if (matriz[i, j] == ".")
                             {
-                                Console.ForegroundColor = ConsoleColor.Yellow;
+                                Console.ForegroundColor = ConsoleColor.Blue;
                                 Console.Write(" " + matriz[i, j]);
                                 Console.ForegroundColor = ConsoleColor.White;
                             }
                             else
                             {
-                                if (matriz[i, j] == "P")
+                                if (matriz[i, j] == ">" || matriz[i, j] == "<" || matriz[i, j] == "V" || matriz[i, j] == "^")
                                 {
-                                    Console.ForegroundColor = ConsoleColor.Cyan;
+                                    Console.ForegroundColor = ConsoleColor.Yellow;
                                     Console.Write(" " + matriz[i, j]);
                                     Console.ForegroundColor = ConsoleColor.White;
                                 }
                                 else
                                 {
-                                    if (matriz[i, j] == "R")
+                                    if (matriz[i, j] == "P")
                                     {
-                                        Console.ForegroundColor = ConsoleColor.Green;
+                                        Console.ForegroundColor = ConsoleColor.Cyan;
                                         Console.Write(" " + matriz[i, j]);
                                         Console.ForegroundColor = ConsoleColor.White;
                                     }
                                     else
                                     {
-                                        if (matriz[i, j] == "C")
+                                        if (matriz[i, j] == "R")
                                         {
-                                            Console.ForegroundColor = ConsoleColor.Gray;
+                                            Console.ForegroundColor = ConsoleColor.Green;
                                             Console.Write(" " + matriz[i, j]);
                                             Console.ForegroundColor = ConsoleColor.White;
                                         }
                                         else
                                         {
-                                            if (matriz[i, j] == "N")
+                                            if (matriz[i, j] == "C")
                                             {
-                                                Console.ForegroundColor = ConsoleColor.Yellow;
+                                                Console.ForegroundColor = ConsoleColor.Gray;
                                                 Console.Write(" " + matriz[i, j]);
                                                 Console.ForegroundColor = ConsoleColor.White;
                                             }
                                             else
                                             {
-                                                Console.ForegroundColor = ConsoleColor.White;
-                                                Console.Write(" " + matriz[i, j]);
+                                                if (matriz[i, j] == "N")
+                                                {
+                                                    Console.ForegroundColor = ConsoleColor.Yellow;
+                                                    Console.Write(" " + matriz[i, j]);
+                                                    Console.ForegroundColor = ConsoleColor.White;
+                                                }
+                                                else
+                                                {
+                                                    Console.ForegroundColor = ConsoleColor.White;
+                                                    Console.Write(" " + matriz[i, j]);
+                                                }
                                             }
                                         }
                                     }
@@ -481,16 +485,307 @@ namespace biblioteca.entity
                             }
                         }
                     }
+                    Console.WriteLine("");
                 }
+                #endregion 
+
+                //
+                //
+                //CADENA DE MANDO
+                //
+                //
+                Console.WriteLine("< < < <                          PUNTOS " + puntos);
+                Console.WriteLine("C O N T R O L E S                MOVIMIENTOS " + contMove);
+                Console.WriteLine("                         [W]");
+                Console.WriteLine("                     8.- ARRIBA");
+                Console.WriteLine("    4.- IZQUIERDA [A]             6.- DERECHA [D]");
+                Console.WriteLine("                     2.- ABAJO");
+                Console.WriteLine("                          [S]");
                 Console.WriteLine("");
+                // do
+                //{
+                opc = Console.ReadLine();
+
+                // } while (opc == "5" || opc == "4" || opc == "6" || opc == "8" || opc == "A" || opc == "S" || opc == "D" || opc == "W" || opc == "a" || opc == "s" || opc == "d" || opc == "w");
+
+                //Console.WriteLine("eligio ");
+
+                //  Console.ReadLine();
+
+                //BUSCA LA POSICION DEL JUGADOR Y LO GUARDA EN DOS VARIABLES
+                #region BUSCAR PACMAN
+                for (int i = 0; i < 31; i++)
+                {
+                    for (int j = 0; j < 28; j++)
+                    {
+                        if (matriz[i, j] == "<" || matriz[i, j] == ">" || matriz[i, j] == "V" || matriz[i, j] == "^")
+                        {
+                            a = i;
+                            b = j;
+                        }
+                    }
+                }
+                #endregion
+                //
+                for (int i = 0; i < 31; i++)
+                {
+                    for (int j = 0; j < 28; j++)
+                    {
+                        if (matriz[i, j] == ".")
+                        {
+                            matrizPuntos[i, j] = ".";
+                        }
+                        else
+                        {
+                            matrizPuntos[i, j] = " ";
+                        }
+                    }
+                }
+                //
+                #region MOVIMIENTO ARRIBA JUGADOR
+                //MOVIMIENTO ARRIBA
+                if (opc == "8" || opc == "w" || opc == "W")
+                {
+                    c = a - 1;
+                    d = b;
+                    for (int i = 0; i < 30; i++)
+                    {
+                        for (int j = 0; j < 27; j++)
+                        {
+                            if (i == c && j == d)
+                            {
+                                if (matriz[i, j] == "-" || matriz[i, j] == "|" || matriz[i, j] == "=" || matriz[i, j] == "#" || matriz[i, j] == "_")
+                                {
+                                    Console.WriteLine("No se puede hacer ese movimiento.");
+                                    Console.ReadLine();
+                                    Console.Clear();
+                                }
+                                else
+                                {
+                                    if (matriz[i, j] == "R" || matriz[i, j] == "P" || matriz[i, j] == "C" || matriz[i, j] == "N")
+                                    {
+                                        vida = false;
+                                    }
+                                    else
+                                    {
+                                        if (matriz[i, j] == ".")
+                                        {
+                                            puntos = puntos + 10;
+                                        }
+                                        if (matriz[i, j] == "x")
+                                        {
+                                            puntos = puntos + 100;
+                                        }
+                                        matriz[a, b] = " ";
+                                        matriz[c, d] = "V";
+                                        contMove = contMove + 1;
+                                        seMovio = true;
+
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                #endregion
+                //
+                #region MOVIMIENTO ABAJO JUGADOR
+                if (opc == "S" || opc == "s" || opc == "5")
+                {
+                    c = a + 1;
+                    d = b;
+                    for (int i = 0; i < 30; i++)
+                    {
+                        for (int j = 0; j < 27; j++)
+                        {
+                            if (i == c && j == d)
+                            {
+                                if (matriz[i, j] == "-" || matriz[i, j] == "|" || matriz[i, j] == "=" || matriz[i, j] == "#" || matriz[i, j] == "_")
+                                {
+                                    Console.WriteLine("No se puede hacer ese movimiento.");
+                                    Console.ReadLine();
+                                    Console.Clear();
+                                }
+                                else
+                                {
+                                    if (matriz[i, j] == "R" || matriz[i, j] == "P" || matriz[i, j] == "C" || matriz[i, j] == "N")
+                                    {
+                                        vida = false;
+                                    }
+                                    else
+                                    {
+                                        if (matriz[i, j] == ".")
+                                        {
+                                            puntos = puntos + 10;
+                                        }
+                                        if (matriz[i, j] == "x")
+                                        {
+                                            puntos = puntos + 100;
+                                        }
+                                        matriz[a, b] = " ";
+                                        matriz[c, d] = "^";
+                                        contMove = contMove + 1;
+                                        seMovio = true;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                #endregion
+                //
+                #region MOVIMIENTO IZQUIERDA JUGADOR
+                //MOVER A LA IZQUIERDA
+                if (opc == "a" || opc == "A" || opc == "4")
+                {
+                    c = a;
+                    d = b - 1;
+                    for (int i = 0; i < 31; i++)
+                    {
+                        for (int j = 0; j < 28; j++)
+                        {
+
+                            if (c == 14 && d == -1)
+                            {
+                                matriz[a, b] = " ";
+                                matriz[14, 27] = ">";
+                                //contMove = contMove + 1;                           
+                            }
+                            else
+                            {
+                                if (i == c && j == d)
+                                {
+                                    if (matriz[i, j] == "-" || matriz[i, j] == "|" || matriz[i, j] == "=" || matriz[i, j] == "#" || matriz[i, j] == "_")
+                                    {
+                                        Console.WriteLine("No se puede hacer ese movimiento.");
+                                        Console.ReadLine();
+                                        Console.Clear();
+                                    }
+                                    else
+                                    {
+                                        if (matriz[i, j] == "R" || matriz[i, j] == "P" || matriz[i, j] == "C" || matriz[i, j] == "N")
+                                        {
+                                            vida = false;
+                                        }
+                                        else
+                                        {
+                                            if (matriz[i, j] == ".")
+                                            {
+                                                puntos = puntos + 10;
+                                            }
+                                            if (matriz[i, j] == "x")
+                                            {
+                                                puntos = puntos + 100;
+                                            }
+                                            matriz[a, b] = " ";
+                                            matriz[c, d] = ">";
+                                            contMove = contMove + 1;
+                                            seMovio = true;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                #endregion
+                //
+                #region MOVIMIENTO DERECHA JUGADOR
+                //MOVER A LA DERECHA
+                if (opc == "D" || opc == "d" || opc == "6")
+                {
+                    c = a;
+                    d = b + 1;
+                    for (int i = 0; i < 31; i++)
+                    {
+                        for (int j = 0; j < 28; j++)
+                        {
+
+                            if (c == 14 && d == 28)
+                            {
+                                matriz[a, b] = " ";
+                                matriz[14, 0] = "<";
+                                // contMove = contMove + 1;
+                            }
+                            else
+                            {
+                                if (i == c && j == d)
+                                {
+                                    if (matriz[i, j] == "-" || matriz[i, j] == "|" || matriz[i, j] == "=" || matriz[i, j] == "#" || matriz[i, j] == "_")
+                                    {
+                                        Console.WriteLine("No se puede hacer ese movimiento.");
+                                        Console.ReadLine();
+                                        Console.Clear();
+                                    }
+                                    else
+                                    {
+                                        if (matriz[i, j] == "R" || matriz[i, j] == "P" || matriz[i, j] == "C" || matriz[i, j] == "N")
+                                        {
+                                            vida = false;
+                                        }
+                                        else
+                                        {
+                                            if (matriz[i, j] == ".")
+                                            {
+                                                puntos = puntos + 10;
+                                            }
+                                            if (matriz[i, j] == "x")
+                                            {
+                                                puntos = puntos + 100;
+                                            }
+                                            matriz[a, b] = " ";
+                                            matriz[c, d] = "<";
+                                            contMove = contMove + 1;
+                                            seMovio = true;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                #endregion
+                // ----- FIN CONTROLES ---- 
+
+
+
+                if (seMovio)
+                {
+                    seMovio = false;
+
+                }
+
+
+                Console.Clear();
+            }  //salida de while
+
+            if (!vida)
+            {
+                #region MENSAJE DE GAME OVER
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("");
+                Console.WriteLine("");
+                Console.WriteLine("     SUS PUNTAJE FUE DE " + puntos);
+                Console.WriteLine("     MOVIMIENTOS ALCANZADOS " + contMove);
+                Console.WriteLine("");
+                Console.WriteLine("                 G a m e  O v e r ");
+                Console.WriteLine("           _ __   __ _  ___ _ __ ___   __ _ _ ___ ");
+                Console.WriteLine("          |  _ | / _` |/ __|  _   _ | / _` |  _  |");
+                Console.WriteLine("          | |_) | (_| | (__| | | | | | (_| | | | |");
+                Console.WriteLine("          | .__/  __,_| ___|_| |_| |_| __,_|_| |_|");
+                Console.WriteLine("          |_| ");
+                Console.WriteLine("                             Programado por Benjamin Mora");
+                Console.ReadKey();
+                #endregion
             }
+
         }
 
-        public static void start()
+        static void presentacion()
         {
-            Console.Clear();
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("2017");
+            Console.WriteLine("");
             Console.WriteLine("           _ __   __ _  ___ _ __ ___   __ _ _ ___ ");
             Console.WriteLine("          |  _ | / _` |/ __|  _   _ | / _` |  _  |");
             Console.WriteLine("          | |_) | (_| | (__| | | | | | (_| | | | |");
@@ -524,106 +819,10 @@ namespace biblioteca.entity
             Thread.Sleep(2000);
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("                      Presione una tecla para continuar...");
-            Console.ReadKey();            
-        }
-
-        public static void agregarJugador() {
+            Console.ReadKey();
             Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("                   Empezar");
-            Console.WriteLine("           _ __   __ _  ___ _ __ ___   __ _ _ ___ ");
-            Console.WriteLine("          |  _ | / _` |/ __|  _   _ | / _` |  _  |");
-            Console.WriteLine("          | |_) | (_| | (__| | | | | | (_| | | | |");
-            Console.WriteLine("          | .__/  __,_| ___|_| |_| |_| __,_|_| |_|");
-            Console.WriteLine("          |_| ");
-            Console.WriteLine("");
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("                    by Benjamin Mora");
-            Console.ForegroundColor = ConsoleColor.Cyan; ;
-            Console.WriteLine("");
-            Console.WriteLine("@=========================================================@");
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("              Ingrese su nombre");            
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("       .-.                                       .-. ");
-            Console.WriteLine("      | OO|                                     | OO|   ");
-            Console.WriteLine("      |   |                                     |   |   ");
-            Console.WriteLine("       ^^^                                       ^^^    ");
-            Console.WriteLine("==========================================================");
-            Thread.Sleep(2000);
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("                      ");    
-        }
-        public static void menu()
-        {           
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("                         MENU");
-            Console.WriteLine("           _ __   __ _  ___ _ __ ___   __ _ _ ___ ");
-            Console.WriteLine("          |  _ | / _` |/ __|  _   _ | / _` |  _  |");
-            Console.WriteLine("          | |_) | (_| | (__| | | | | | (_| | | | |");
-            Console.WriteLine("          | .__/  __,_| ___|_| |_| |_| __,_|_| |_|");
-            Console.WriteLine("          |_| ");
-            Console.WriteLine("");
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("                    by Benjamin Mora");
-            Console.ForegroundColor = ConsoleColor.Cyan; ;
-            Console.WriteLine("");
-            Console.WriteLine("@=========================================================@");
-            Console.Write("       .-.           ");
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.Write("  1.- Jugar ");
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("                .-.    ");
-            Console.Write("      | OO|   ");
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write("         2.- Tabla de puntajes");
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("    | OO|   ");
-            Console.WriteLine("      |   |                                     |   |   ");
-            Console.WriteLine("       ^^^                                       ^^^    ");
-            Console.WriteLine("==========================================================");
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("               Elija una opcion...");
-        }
 
-
-        public static void imprimirPuntajes(JugadorColeccion jugadores) {
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("                   TABLA DE PUNTAJES");
-            Console.WriteLine("           _ __   __ _  ___ _ __ ___   __ _ _ ___ ");
-            Console.WriteLine("          |  _ | / _` |/ __|  _   _ | / _` |  _  |");
-            Console.WriteLine("          | |_) | (_| | (__| | | | | | (_| | | | |");
-            Console.WriteLine("          | .__/  __,_| ___|_| |_| |_| __,_|_| |_|");
-            Console.WriteLine("          |_| ");
-            Console.WriteLine("");
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("                    by Benjamin Mora");
-            Console.ForegroundColor = ConsoleColor.Cyan; ;
-            Console.WriteLine("");
-            Console.WriteLine("@=========================================================@");
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("              Nombre                  Puntaje");
-            foreach (Jugador xx in jugadores.listar())
-            {
-                Console.WriteLine("             "+xx.nombre + "                       " + xx.puntaje);
-            }            
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("       .-.                                       .-. ");
-            Console.WriteLine("      | OO|                                     | OO|   ");
-            Console.WriteLine("      |   |                                     |   |   ");
-            Console.WriteLine("       ^^^                                       ^^^    ");
-            Console.WriteLine("==========================================================");
-            Thread.Sleep(2000);
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("                      Presione una tecla volver al menu");
-            Console.ReadKey();      
         }
-        public static void gameOver(String nombre, int puntaje) {
-            Console.Clear();
-        }
-
-      
     }
 }
+

@@ -9,6 +9,7 @@ namespace biblioteca
     {
         public String nombre { get; set; }
         public int puntaje { get; set; }
+        public int contMovimiento { get; set; }
         public int vida { get; set; }
 
         public Jugador(String nombre, int puntaje) {
@@ -25,6 +26,7 @@ namespace biblioteca
             nombre = String.Empty;
             puntaje = 0;
             vida = 0;
+            contMovimiento = 0;
         }
 
         public override string ToString()
