@@ -34,7 +34,24 @@ namespace programa
             while (play)
             {
                 Pantalla.menu();
-                opcion = Console.ReadLine();
+             //   opcion = Console.ReadLine();
+                ConsoleKey opcionMenu = Console.ReadKey(true).Key;
+                switch (opcionMenu)
+                {
+                    case ConsoleKey.D1:
+                        opcion = "1";
+                        break;
+                    case ConsoleKey.D2:
+                        opcion = "2";
+                        break;
+                    case ConsoleKey.D3:
+                        opcion = "3";
+                        break;
+                    case ConsoleKey.D4:
+                        opcion = "4";
+                        break;
+
+                }
                 if (opcion.Equals("1"))
                 {
                     //imprime salida para agregar
@@ -73,7 +90,24 @@ namespace programa
                     Console.WriteLine("                     2.- ABAJO");
                     Console.WriteLine("                          [S]");
                     Console.WriteLine("");
-                    opcion = Console.ReadLine();
+                    // opcion = Console.ReadLine();
+                    ConsoleKey tecla = Console.ReadKey(true).Key;
+                    switch (tecla)
+                    {
+                        case ConsoleKey.W:
+                            opcion = "w";
+                            break;
+                        case ConsoleKey.S:
+                            opcion = "s";
+                            break;
+                        case ConsoleKey.A:
+                            opcion = "a";
+                            break;
+                        case ConsoleKey.D:
+                            opcion = "d";
+                            break;
+
+                    }
                     posicionPlayer = Mapa.buscarPlayer(matrizFondo); // se busca la posicion del jugador para tenerla guardada
 
                     if (!Mapa.movimientoPlayer(opcion, matrizFondo, posicionPlayer, player, matrizComida))
