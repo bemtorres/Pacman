@@ -11,8 +11,7 @@ namespace programa
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Pacman: \"{0}\"",
-                     Console.Title);
+            Console.WriteLine("Pacman: \"{0}\"",  Console.Title);
             JugadorColeccion jugadores = new JugadorColeccion();
             //Se crea el mapa
             String[,] matrizFondo = Mapa.fondo();

@@ -426,7 +426,6 @@ namespace biblioteca.entity
             return matrizComida;
 
         }
-
         public static int[] buscarPlayer(String[,] matriz) {
             int[] posicion= new int[2];
             for (int i = 0; i < 31; i++)
